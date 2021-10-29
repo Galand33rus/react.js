@@ -16,16 +16,11 @@ function App() {
     });
   };
 
-  const updateMessage = event => {
+  const updateMessageList = event => {
     event.preventDefault();
-    setMessageList(messageList => ([...messageList, message]));
+    setMessageList([...messageList, message]);
     setValue('');
   };
-
-  useEffect(() => {
-    console.log(messageList);
-    // console.log(messageList[messageList.indexOf(message)]);
-  }, [messageList]);
 
   useEffect(() => {
     if (messageList[messageList.length - 1] && messageList[messageList.length - 1].author !== "Bot") {
@@ -49,10 +44,10 @@ function App() {
         <dir className="chat">
           <Message className="text-message" message={messageList}/>
         </dir>
-        <form onSubmit={updateMessage}>
+        <form onSubmit={updateMessageList}>
           <input className="input" type="text" placeholder="enter a message" value={value}
                  onChange={handleMessageChange}/>
-          <button className="button" type="submit" onSubmit={updateMessage}>send</button>
+          <button className="button" type="submit" onSubmit={updateMessageList}>send</button>
         </form>
       </main>
     </div>
