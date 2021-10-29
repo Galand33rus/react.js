@@ -1,6 +1,7 @@
 import './App.scss';
 import {Message} from './components/Message/Message';
 import {useState, useEffect} from "react";
+import {Form} from "./components/Form/Form";
 
 function App() {
 
@@ -10,10 +11,6 @@ function App() {
 
   const handleMessageChange = event => {
     setValue(event.target.value)
-    setMessage({
-      author: 'User',
-      text: event.target.value
-    });
   };
 
   const updateMessageList = event => {
@@ -22,11 +19,17 @@ function App() {
     setValue('');
   };
 
+  useEffect(()=>{
+    setMessage({
+      author: 'User',
+      text: value
+    });
+  }, [value]);
+
   useEffect(() => {
     if (messageList[messageList.length - 1] && messageList[messageList.length - 1].author !== "Bot") {
       setTimeout(() => {
-        setMessageList([
-          ...messageList, {
+        setMessageList([...messageList, {
             author: "Bot",
             text: "I'm a bot"
           }
@@ -42,13 +45,9 @@ function App() {
       </header>
       <main className="App-main">
         <dir className="chat">
-          <Message className="text-message" message={messageList}/>
+          <Message message={messageList}/>
         </dir>
-        <form onSubmit={updateMessageList}>
-          <input className="input" type="text" placeholder="enter a message" value={value}
-                 onChange={handleMessageChange}/>
-          <button className="button" type="submit" onSubmit={updateMessageList}>send</button>
-        </form>
+        <Form updateMessageList={updateMessageList} handleMessageChange={handleMessageChange} value={value}/>
       </main>
     </div>
   );

@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 .App {
   min-height: 100vh;
   background-color: #282c34;
@@ -23,7 +27,9 @@
 }
 
 .chat {
-  width: 350px;
+  display: flex;
+  flex-direction: column;
+  width: 550px;
   height: 450px;
   border: 1px solid #2196f3;
   //border: 1px solid #e28b00;
@@ -32,43 +38,6 @@
   //box-shadow: 0 0 10px #e28b00;
   padding: 0;
   overflow-y: auto;
-}
-
-.text-message {
-  width: 200px;
-  border: 2px solid #fff;
-  border-radius: 20px;
-  padding: 12px;
-  margin-left: 5px;
-}
-
-.input {
-  width: 262px;
-  padding: 10px;
-  border: 1px solid #2196f3;
-  border-radius: 4px;
-  background-color: transparent;
-  color: #fff;
-
-  &:focus {
-    outline: none;
-    box-shadow: 0 0 10px #2196f3;
-  }
-}
-
-.button {
-  margin-left: 10px;
-  background-color: transparent;
-  color: #fff;
-  text-transform: uppercase;
-  border: 1px solid #2196f3;
-  border-radius: 4px;
-  padding: 10px;
-  cursor: pointer;
-
-  &:active {
-    box-shadow: 0 0 10px #2196f3;
-  }
 }
 
 /* полоса прокрутки (скроллбар) */
