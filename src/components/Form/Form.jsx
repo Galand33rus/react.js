@@ -1,18 +1,32 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './Form.scss';
 
-export const Form = (props) => {
-  return <form className="form" onSubmit={props.updateMessageList}>
+export const Form = ({ updateMessageList }) => {
+  const [value, setValue] = useState('');
+
+  const handleMessageChange = event => {
+    setValue(event.target.value)
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (value !== '') {
+      updateMessageList(value);
+      setValue('');
+    }
+  }
+
+  return <form className="form" onSubmit={handleSubmit}>
     <input
       className="input"
       type="text"
       placeholder="Enter a message"
-      value={props.value}
-      onChange={props.handleMessageChange}/>
+      value={value}
+      onChange={handleMessageChange}
+      autoFocus={true}/>
     <button
       className="button"
-      type="submit"
-      onSubmit={props.updateMessageList}>
+      type="submit">
         send
     </button>
   </form>;

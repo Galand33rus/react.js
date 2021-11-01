@@ -5,38 +5,30 @@ import {Form} from "./components/Form/Form";
 
 function App() {
 
-  const [value, setValue] = useState('');
-  const [message, setMessage] = useState({});
   const [messageList, setMessageList] = useState([]);
 
-  const handleMessageChange = event => {
-    setValue(event.target.value)
-  };
-
-  const updateMessageList = event => {
-    event.preventDefault();
-    setMessageList([...messageList, message]);
-    setValue('');
-  };
-
-  useEffect(()=>{
-    setMessage({
+  const updateMessageList = value => {
+    setMessageList([...messageList, {
       author: 'User',
       text: value
-    });
-  }, [value]);
+    }]);
+  };
 
   useEffect(() => {
-    if (messageList[messageList.length - 1] && messageList[messageList.length - 1].author !== "Bot") {
-      setTimeout(() => {
-        setMessageList([...messageList, {
+      const timer = setTimeout(() => {
+        if (messageList[messageList.length - 1] && messageList[messageList.length - 1].author !== "Bot") {
+          setMessageList([...messageList, {
             author: "Bot",
             text: "I'm a bot"
           }
-        ]);
+          ]);
+        }
       }, 1500);
-    }
+
+      return () => clearTimeout(timer)
+
   }, [messageList]);
+
 
   return (
     <div className="App">
@@ -45,9 +37,9 @@ function App() {
       </header>
       <main className="App-main">
         <dir className="chat">
-          <Message message={messageList}/>
+          <Message messageList={messageList}/>
         </dir>
-        <Form updateMessageList={updateMessageList} handleMessageChange={handleMessageChange} value={value}/>
+        <Form updateMessageList={updateMessageList}/>
       </main>
     </div>
   );

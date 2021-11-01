@@ -1,8 +1,7 @@
 import React from 'react';
 import './Message.scss';
 
-export const Message = (props) => {
-  const messageList = props.message
+export const Message = ({ messageList }) => {
   return messageList.map((message) =>
     <p
       className={message.author === "Bot" ? "bot" : "user"}
