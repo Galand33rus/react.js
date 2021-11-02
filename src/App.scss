@@ -1,0 +1,75 @@
+* {
+  box-sizing: border-box;
+}
+
+.App {
+  min-height: 100vh;
+  background-color: #282c34;
+  color: white;
+}
+
+.App-header {
+  display: flex;
+  justify-content: center;
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #000;
+  text-shadow: 0 0 10px #2196f3,  0 0 40px #2196f3,  0 0 80px #2196f3;
+}
+
+.title {
+  margin: 0;
+}
+
+.App-main {
+  padding-left: 20px;
+}
+
+.chat {
+  display: flex;
+  flex-direction: column;
+  width: 550px;
+  height: 450px;
+  border: 1px solid #2196f3;
+  //border: 1px solid #e28b00;
+  border-radius: 4px;
+  box-shadow: 0 0 10px #2196f3;
+  //box-shadow: 0 0 10px #e28b00;
+  padding: 0;
+  overflow-y: auto;
+}
+
+/* полоса прокрутки (скроллбар) */
+::-webkit-scrollbar {
+  width: 16px; /* ширина для вертикального скролла */
+  background-color: #143861;
+}
+
+/* ползунок скроллбара */
+::-webkit-scrollbar-thumb {
+  background-color: #2196f3;
+  border-radius: 9em;
+  box-shadow: inset 1px 1px 10px #f3faf7;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #253861;
+}
+
+/* Стрелки */
+
+::-webkit-scrollbar-button:vertical:start:decrement {
+  background: linear-gradient(120deg, #02141a 40%, rgba(0, 0, 0, 0) 41%),
+  linear-gradient(240deg, #02141a 40%, rgba(0, 0, 0, 0) 41%),
+  linear-gradient(0deg, #02141a 30%, rgba(0, 0, 0, 0) 31%);
+  background-color: #2196f3;
+}
+
+::-webkit-scrollbar-button:vertical:end:increment {
+  background: linear-gradient(300deg, #02141a 40%, rgba(0, 0, 0, 0) 41%),
+  linear-gradient(60deg, #02141a 40%, rgba(0, 0, 0, 0) 41%),
+  linear-gradient(180deg, #02141a 30%, rgba(0, 0, 0, 0) 31%);
+  background-color: #2196f3;
+}
+
