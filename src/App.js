@@ -4,23 +4,17 @@ import {useState, useEffect, useRef} from "react";
 import {Form} from "./components/Form/Form";
 import {v4 as uuidv4} from 'uuid';
 import {AUTHORS} from "./utils/constants"
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
+import {ListChats} from "./components/List/List";
 
 function App() {
 
   const [messageList, setMessageList] = useState([]);
-  const [chatList, setChatList] = useState([
-    {
-    name: 'tempName',
-    id: uuidv4()
-    }
+  const [chatList] = useState([
+    {name: 'tempChatName1', id: uuidv4()},
+    {name: 'tempChatName2', id: uuidv4()},
+    {name: 'tempChatName3', id: uuidv4()},
   ]);
   const scroll = useRef();
-  const scrollToBottom = () => {
-    // scroll.current?.scrollIntoView({behavior: "auto"});
-    scroll.current?.scrollIntoView(false);
-  }
 
   const updateMessageList = value => {
     setMessageList([...messageList, {
@@ -45,7 +39,8 @@ function App() {
   }, [messageList]);
 
   useEffect(() => {
-    scrollToBottom();
+    scroll.current?.scrollIntoView({behavior: "auto"});
+    // scroll.current?.scrollIntoView(false);
   });
 
 
@@ -57,17 +52,7 @@ function App() {
       <main className="App-main">
         <div className="chat-list">
           <p className="chat-list__title">list of chats</p>
-          <List>
-            <ListItem>
-              Chat # 1
-            </ListItem>
-            <ListItem>
-              Chat # 2
-            </ListItem>
-            <ListItem>
-              Chat # 3
-            </ListItem>
-          </List>
+          <ListChats chatList={chatList}/>
         </div>
         <div className="chat-wrapper">
           <div className="chat" ref={scroll}>

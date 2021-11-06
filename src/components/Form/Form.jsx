@@ -1,6 +1,6 @@
-import React, {useState, useRef} from 'react';
+import React, {useState, useRef, useCallback} from 'react';
 import {TextField, Button} from "@mui/material";
-import {styled} from '@mui/material/styles';
+import {styled, createTheme, ThemeProvider} from '@mui/material/styles';
 // import FormControl, {useFormControl} from '@mui/material/FormControl';
 // import {StyledEngineProvider} from '@mui/material/styles';
 import './Form.scss';
@@ -9,22 +9,22 @@ export const Form = ({updateMessageList}) => {
   const [value, setValue] = useState('');
   const inputRef = useRef();
 
-  // const theme = createTheme({
-  //   palette: {
-  //     primary: {
-  //       main: '#ff4400',
-  //     },
-  //     secondary: {
-  //       light: '#0066ff',
-  //       main: '#0044ff',
-  //       contrastText: '#ffcc00',
-  //     },
-  //   },
-  // });
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: '#2196f3',
+      },
+      secondary: {
+        main: '#fff',
+      },
+    },
+  });
 
-  const handleMessageChange = event => {
+  const handleMessageChange = useCallback((event) => {
+    console.log(event.target.value)
     setValue(event.target.value)
-  };
+    // setValue((prevMessages) => event);
+  }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -35,15 +35,13 @@ export const Form = ({updateMessageList}) => {
     }
   }
 
-  const CssTextField = styled(TextField)({
-    '& label.Mui-root': {
-      //color: '#2196f3',
-      color: 'rgba(255,255,255, .7)',
+  const StyledTextField = styled(TextField)({
+    '& .MuiInputLabel-root': {
+      // color: 'rgba(255,255,255, .4)'
+      color: '#2196f3',
     },
-    color: 'rgba(255,255,255, .7)',
     '& label.Mui-focused': {
       color: '#2196f3',
-      // color: 'red',
     },
     '& .MuiInput-underline:after': {
       borderBottomColor: 'green',
@@ -55,7 +53,6 @@ export const Form = ({updateMessageList}) => {
       },
       '&:hover fieldset': {
         borderColor: '#2196f3',
-        // boxShadow: '0 0 10px #2196f3'
       },
       '&.Mui-focused fieldset': {
         borderColor: '#2196f3',
@@ -86,7 +83,7 @@ export const Form = ({updateMessageList}) => {
     },
   });
 
-  return <form className="form" onSubmit={handleSubmit}>
+  return <form className="form" onSubmit={handleSubmit} >
     {/*<TextField*/}
     {/*  id="outlined-basic"*/}
     {/*  label="Enter a message"*/}
@@ -112,20 +109,21 @@ export const Form = ({updateMessageList}) => {
     {/*  type="submit">*/}
     {/*    send*/}
     {/*</button>*/}
+    <ThemeProvider theme={theme}>
+      <StyledTextField
+        id="outlined-basic"
+        label="Enter a message"
+        autoComplete="off"
+        variant="outlined"
+        autoFocus={true}
+        value={value}
+        ref={inputRef}
+        margin="normal"
+        color="primary"
+        onChange={handleMessageChange}/>
+      <StyledButton type="submit" margin="normal">send</StyledButton>
+    </ThemeProvider>
 
-    <CssTextField
-      id="outlined-basic"
-      label="Enter a message"
-      autoComplete="off"
-      variant="outlined"
-      autoFocus={true}
-      value={value}
-      ref={inputRef}
-      margin="normal"
-      color="primary"
-      onChange={handleMessageChange}/>
-
-    <StyledButton type="submit" margin="normal">send</StyledButton>
 
 
   </form>;
