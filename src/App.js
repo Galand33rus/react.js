@@ -1,6 +1,6 @@
 import './App.scss';
 import {Message} from './components/Message/Message';
-import {useState, useEffect, useRef} from "react";
+import {useState, useEffect} from "react";
 import {Form} from "./components/Form/Form";
 import {v4 as uuidv4} from 'uuid';
 import {AUTHORS} from "./utils/constants"
@@ -14,7 +14,6 @@ function App() {
     {name: 'tempChatName2', id: uuidv4()},
     {name: 'tempChatName3', id: uuidv4()},
   ]);
-  const scroll = useRef();
 
   const updateMessageList = value => {
     setMessageList([...messageList, {
@@ -38,12 +37,6 @@ function App() {
     return () => clearTimeout(timer)
   }, [messageList]);
 
-  useEffect(() => {
-    scroll.current?.scrollIntoView({behavior: "auto"});
-    // scroll.current?.scrollIntoView(false);
-  });
-
-
   return (
     <div className="App">
       <header className="App-header">
@@ -55,7 +48,7 @@ function App() {
           <ListChats chatList={chatList}/>
         </div>
         <div className="chat-wrapper">
-          <div className="chat" ref={scroll}>
+          <div className="chat">
             <Message messageList={messageList}/>
           </div>
           <Form updateMessageList={updateMessageList}/>
