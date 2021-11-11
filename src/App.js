@@ -1,60 +1,30 @@
-import './App.scss';
-import {Message} from './components/Message/Message';
-import {useState, useEffect} from "react";
-import {Form} from "./components/Form/Form";
-import {v4 as uuidv4} from 'uuid';
-import {AUTHORS} from "./utils/constants"
-import {ListChats} from "./components/List/List";
+import React from "react";
+import {BrowserRouter, Link} from "react-router-dom";
+import {Router} from "./components/Router/Router"
+import "./App.scss";
 
 function App() {
 
-  const [messageList, setMessageList] = useState([]);
-  const [chatList] = useState([
-    {name: 'tempChatName1', id: uuidv4()},
-    {name: 'tempChatName2', id: uuidv4()},
-    {name: 'tempChatName3', id: uuidv4()},
-  ]);
-
-  const updateMessageList = value => {
-    setMessageList([...messageList, {
-      author: AUTHORS.user,
-      text: value,
-      id: uuidv4()
-    }]);
-  };
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      if (messageList[messageList.length - 1] && messageList[messageList.length - 1].author !== AUTHORS.bot) {
-        setMessageList([...messageList, {
-          author: AUTHORS.bot,
-          text: "I'm a bot",
-          id: uuidv4()
-        }
-        ]);
-      }
-    }, 1500);
-    return () => clearTimeout(timer)
-  }, [messageList]);
-
   return (
     <div className="App">
-      <header className="App-header">
-        <h1 className="title">Chat</h1>
-      </header>
-      <main className="App-main">
-        <div className="chat-list">
-          <p className="chat-list__title">list of chats</p>
-          <ListChats chatList={chatList}/>
-        </div>
-        <div className="chat-wrapper">
-          <div className="chat">
-            <Message messageList={messageList}/>
-          </div>
-          <Form updateMessageList={updateMessageList}/>
-        </div>
-
-      </main>
+        <BrowserRouter>
+          <header className="App-header">
+            <ul className="Navigate">
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/chat">Chats</Link>
+              </li>
+              <li>
+                <Link to="/profile">Profile</Link>
+              </li>
+            </ul>
+          </header>
+          <main className="App-main">
+            <Router />
+          </main>
+        </BrowserRouter>
     </div>
   );
 }
