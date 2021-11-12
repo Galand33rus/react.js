@@ -77,10 +77,9 @@ export const Chat = () => {
     return () => clearTimeout(timer)
   }, [messageList[chatId]]);
 
-  // if (!chatList[chatId]) {
-  //   return <Navigate replace to="/chat" />;
-  //   // navigate("/chat")
-  // }
+  if (chatId && !(chatId in messageList)) {
+    return <Navigate replace to="/chat"/>;
+  }
 
   return (
     <div className="chat">
