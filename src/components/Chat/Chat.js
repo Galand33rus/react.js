@@ -4,11 +4,12 @@ import {v4 as uuidv4} from "uuid";
 import {Form} from "../Form/Form";
 import {Message} from "../Message/Message";
 import "./Chat.scss"
-import {Navigate, useParams} from "react-router-dom";
+import {Navigate, useParams, useNavigate} from "react-router-dom";
 import {ChatList} from "../ChatList/ChatList";
 import {ChatListForm} from "../ChatListForm/ChatListForm";
 
 export const Chat = () => {
+  const navigate = useNavigate();
   const {chatId} = useParams()
   const [chatList, setChatList] = useState([
     {name: 'Chat 1', id: 'chat1'},
@@ -37,6 +38,9 @@ export const Chat = () => {
   };
   const removeItem = item => {
     setChatList(chatList.filter(n => n.id !== item));
+    if (item === chatId) {
+      navigate("/chat")
+    }
   };
 
   const initialStateMessageList = (chatList) => {
@@ -73,8 +77,9 @@ export const Chat = () => {
     return () => clearTimeout(timer)
   }, [messageList[chatId]]);
 
-  // if (!messageList[chatId]) {
+  // if (!chatList[chatId]) {
   //   return <Navigate replace to="/chat" />;
+  //   // navigate("/chat")
   // }
 
   return (
