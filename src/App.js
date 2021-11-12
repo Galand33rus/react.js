@@ -1,12 +1,15 @@
 import React from "react";
 import {BrowserRouter, Link} from "react-router-dom";
 import {Router} from "./components/Router/Router"
+import {Provider} from "react-redux";
+import {store} from "./store";
 import "./App.scss";
 
 function App() {
 
   return (
-    <div className="App">
+    <Provider store={store}>
+      <div className="App">
         <BrowserRouter>
           <header className="App-header">
             <ul className="Navigate">
@@ -25,7 +28,8 @@ function App() {
             <Router />
           </main>
         </BrowserRouter>
-    </div>
+      </div>
+    </Provider>
   );
 }
 

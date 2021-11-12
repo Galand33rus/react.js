@@ -44,7 +44,7 @@ export const Chat = () => {
   };
 
   const initialStateMessageList = (chatList) => {
-    if(Object.keys(messageList).length === 0){
+    if (Object.keys(messageList).length === 0) {
       for (let i = 0; i < chatList.length; i++) {
         setMessageList((messageList) => ({
           ...messageList,
@@ -77,10 +77,9 @@ export const Chat = () => {
     return () => clearTimeout(timer)
   }, [messageList[chatId]]);
 
-  // if (!chatList[chatId]) {
-  //   return <Navigate replace to="/chat" />;
-  //   // navigate("/chat")
-  // }
+  if (chatId && !(chatId in messageList)) {
+    return <Navigate replace to="/chat"/>;
+  }
 
   return (
     <div className="chat">
