@@ -1,6 +1,8 @@
 import React, {useState, useRef, useCallback} from 'react';
 import {TextField, Button} from "@mui/material";
-import {styled, createTheme, ThemeProvider} from '@mui/material/styles';
+import {styled} from '@mui/material/styles';
+import {v4 as uuidv4} from "uuid";
+import {AUTHORS} from "../../utils/constants";
 // import FormControl, {useFormControl} from '@mui/material/FormControl';
 // import {StyledEngineProvider} from '@mui/material/styles';
 import './Form.scss';
@@ -9,27 +11,18 @@ export const Form = ({updateMessageList}) => {
   const [value, setValue] = useState('');
   const inputRef = useRef();
 
-  const theme = createTheme({
-    palette: {
-      primary: {
-        main: '#2196f3',
-      },
-      secondary: {
-        main: '#fff',
-      },
-    },
-  });
-
   const handleMessageChange = useCallback((event) => {
-    console.log(event.target.value)
     setValue(event.target.value)
-    // setValue((prevMessages) => event);
   }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     if (value !== '') {
-      updateMessageList(value);
+      updateMessageList({
+              author: AUTHORS.user,
+              text: value,
+              id: uuidv4()
+      });
       setValue('');
       inputRef.current?.focus();
     }
@@ -109,7 +102,6 @@ export const Form = ({updateMessageList}) => {
     {/*  type="submit">*/}
     {/*    send*/}
     {/*</button>*/}
-    <ThemeProvider theme={theme}>
       <StyledTextField
         id="outlined-basic"
         label="Enter a message"
@@ -122,10 +114,6 @@ export const Form = ({updateMessageList}) => {
         color="primary"
         onChange={handleMessageChange}/>
       <StyledButton type="submit" margin="normal">send</StyledButton>
-    </ThemeProvider>
-
-
-
   </form>;
 };
 
