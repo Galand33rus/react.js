@@ -1,11 +1,9 @@
-import React, {useState, useRef, useCallback} from 'react';
+import {useState, useRef, useCallback} from "react";
 import {TextField, Button} from "@mui/material";
 import {styled} from '@mui/material/styles';
 import {v4 as uuidv4} from "uuid";
 import {AUTHORS} from "../../utils/constants";
-// import FormControl, {useFormControl} from '@mui/material/FormControl';
-// import {StyledEngineProvider} from '@mui/material/styles';
-import './Form.scss';
+import "./Form.scss";
 
 export const Form = ({updateMessageList}) => {
   const [value, setValue] = useState('');
@@ -30,7 +28,6 @@ export const Form = ({updateMessageList}) => {
 
   const StyledTextField = styled(TextField)({
     '& .MuiInputLabel-root': {
-      // color: 'rgba(255,255,255, .4)'
       color: '#2196f3',
     },
     '& label.Mui-focused': {
@@ -54,7 +51,7 @@ export const Form = ({updateMessageList}) => {
   });
 
   const StyledButton = styled(Button)({
-    width: 550,
+    width: 800,
     color: '#fff',
     marginTop: 20,
     boxShadow: 'none',
@@ -77,31 +74,6 @@ export const Form = ({updateMessageList}) => {
   });
 
   return <form className="form" onSubmit={handleSubmit} >
-    {/*<TextField*/}
-    {/*  id="outlined-basic"*/}
-    {/*  label="Enter a message"*/}
-    {/*  variant="outlined"*/}
-    {/*  autoComplete="off"*/}
-    {/*  autoFocus={true}*/}
-    {/*  value={value}*/}
-    {/*  ref={inputRef}*/}
-    {/*  margin="normal"*/}
-    {/*  color="primary"*/}
-    {/*  onChange={handleMessageChange}/>*/}
-
-    {/*<input*/}
-    {/*  className="input"*/}
-    {/*  type="text"*/}
-    {/*  placeholder="Enter a message"*/}
-    {/*  value={value}*/}
-    {/*  onChange={handleMessageChange}*/}
-    {/*  ref={inputRef}*/}
-    {/*  autoFocus={true}/>*/}
-    {/*<button*/}
-    {/*  className="button"*/}
-    {/*  type="submit">*/}
-    {/*    send*/}
-    {/*</button>*/}
       <StyledTextField
         id="outlined-basic"
         label="Enter a message"

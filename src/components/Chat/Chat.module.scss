@@ -1,3 +1,5 @@
+@import "src/vars";
+
 .title {
   margin: 0;
 }
@@ -7,21 +9,19 @@
   justify-content: space-between;
 }
 
-.chat-list-window {
+.list {
   display: flex;
   flex-direction: column;
 }
 
-.chat-window {
+.window {
   display: flex;
   flex-direction: column;
-  width: 550px;
+  width: 800px;
   height: 450px;
-  border: 1px solid #2196f3;
-  //border: 1px solid #e28b00;
+  border: 1px solid $primary-color;
   border-radius: 4px;
-  box-shadow: 0 0 10px #2196f3;
-  //box-shadow: 0 0 10px #e28b00;
+  box-shadow: 0 0 10px $primary-color;
   padding: 0;
   overflow-y: auto;
 }

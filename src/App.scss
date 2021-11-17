@@ -1,3 +1,5 @@
+@import "vars";
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -6,7 +8,7 @@
 .App {
   min-height: 100vh;
   background-color: #282c34;
-  color: white;
+  color: $white-color;
 }
 
 .App-header {
@@ -15,19 +17,17 @@
   text-transform: uppercase;
   font-weight: bold;
   color: #000;
-  text-shadow: 0 0 10px #2196f3,  0 0 40px #2196f3,  0 0 80px #2196f3;
+  text-shadow: 0 0 10px $primary-color,  0 0 40px $primary-color,  0 0 80px $primary-color;
 }
 
 
 .App-main {
   padding-left: 20px;
   display: flex;
-  //justify-content: space-around;
 }
 
 .Navigate {
   display: flex;
-  //padding-top: 15px;
 }
 
 li {
@@ -38,4 +38,7 @@ li {
 li a {
   color: #000;
   text-decoration: none;
+  &:hover{
+    text-shadow: 0 0 10px lighten($primary-color, 10%),  0 0 40px lighten($primary-color, 10%),  0 0 80px lighten($primary-color, 10%);
+  }
 }
