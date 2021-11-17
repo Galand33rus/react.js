@@ -44,7 +44,7 @@ export const Chat = () => {
   };
 
   const initialStateMessageList = (chatList) => {
-    if(Object.keys(messageList).length === 0){
+    if (Object.keys(messageList).length === 0) {
       for (let i = 0; i < chatList.length; i++) {
         setMessageList((messageList) => ({
           ...messageList,
