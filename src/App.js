@@ -1,6 +1,5 @@
-import React from "react";
 import {BrowserRouter, Link} from "react-router-dom";
-import {Router} from "./components/Router/Router"
+import {Router} from "./components/Router"
 import {Provider} from "react-redux";
 import {store} from "./store";
 import "./App.scss";

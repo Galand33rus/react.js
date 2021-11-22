@@ -1,4 +1,4 @@
-import React, {useState, useCallback} from 'react';
+import {useState, useCallback} from "react";
 import {TextField, Button} from "@mui/material";
 import {styled} from '@mui/material/styles';
 import {v4 as uuidv4} from "uuid";
@@ -29,7 +29,7 @@ export const ChatListForm = ({updateChatList}) => {
       borderBottomColor: 'green',
     },
     '& .MuiOutlinedInput-root': {
-      width: 550,
+      width: 300,
       color: 'rgba(255,255,255)',
       '& fieldset': {
         borderColor: '#2196f3',
@@ -44,7 +44,7 @@ export const ChatListForm = ({updateChatList}) => {
   });
 
   const StyledButton = styled(Button)({
-    width: 550,
+    width: 300,
     color: '#fff',
     marginTop: 20,
     boxShadow: 'none',

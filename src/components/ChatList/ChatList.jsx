@@ -1,7 +1,7 @@
-import React, {useEffect, useRef} from "react";
-import {List, ListItem, ListItemText} from "@mui/material";
-import "./ChatList.scss"
+import {useEffect, useRef} from "react";
 import {NavLink} from "react-router-dom";
+import {List, ListItem, ListItemText} from "@mui/material";
+import styles from "./ChatList.module.scss"
 
 
 export const ChatList = ({chatList, removeItem}) => {
@@ -16,8 +16,8 @@ export const ChatList = ({chatList, removeItem}) => {
 
   return (
     <div>
-      <div className="chat-list">
-        <p className="chat-list__title">list of chats</p>
+      <div className={styles.chat}>
+        <p className={styles.title}>list of chats</p>
         <List>
           {chatList.map(chat => <ListItem key={chat.id}>
             <ListItemText primary={
@@ -28,7 +28,7 @@ export const ChatList = ({chatList, removeItem}) => {
                 {chat.name}
               </NavLink>
             }/>
-            <button className="delete" onClick={delChat} value={chat.id}>delete
+            <button className={styles.delete} onClick={delChat} value={chat.id}>delete
             </button>
           </ListItem>)
           }

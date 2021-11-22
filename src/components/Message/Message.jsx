@@ -1,6 +1,6 @@
-import React, {useRef, useEffect} from 'react';
-import './Message.scss';
+import {useRef, useEffect} from "react";
 import {AUTHORS} from "../../utils/constants"
+import styles from "./Message.module.scss";
 
 export const Message = ({messageList}) => {
   const scroll = useRef();
@@ -11,8 +11,8 @@ export const Message = ({messageList}) => {
 
   return messageList.map((message) =>
     <p ref={scroll}
-       className={message.author === AUTHORS.bot ? "bot" : "user"}
+       className={message.author === AUTHORS.bot ? styles.bot : styles.user}
        key={message.id}>
-      <span className="author">{message.author}</span>: {message.text}
+      <span className={styles.author}>{message.author}</span>: {message.text}
     </p>);
 };

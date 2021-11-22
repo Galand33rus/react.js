@@ -1,11 +1,12 @@
-import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {toggleCheckbox} from "../../store/profile/action";
 import {Checkbox, FormControlLabel, FormGroup,} from "@mui/material";
+import {getCheckboxValue} from "../../store/profile/selectors";
+import {getName} from "../../store/profile/selectors";
 
 export const Profile = () => {
-  const checkboxValue = useSelector((state) => state.checkbox);
-  const name = useSelector((state) => state.name);
+  const checkboxValue = useSelector(getCheckboxValue);
+  const name = useSelector(getName);
   const dispatch = useDispatch();
 
   const handleChange = () => {
@@ -19,7 +20,8 @@ export const Profile = () => {
         <FormControlLabel control={<Checkbox
           checked={checkboxValue}
           onChange={handleChange}
-          style ={{color: "#2196f3"}}/>} label={name}/>
+          style ={{color: "#2196f3"}}/>}
+          label={name}/>
       </FormGroup>
     </div>
   );

@@ -1,8 +1,7 @@
-import React from "react";
 import {Routes, Route} from "react-router-dom";
-import {Home} from "../Home/Home";
-import {Chat} from "../Chat/Chat";
-import {Profile} from "../Profile/Profile";
+import {Home} from "../Home";
+import {Chat} from "../Chat";
+import {Profile} from "../Profile";
 
 export const Router = () => {
 
