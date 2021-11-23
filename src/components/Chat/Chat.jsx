@@ -7,8 +7,8 @@ import {ChatListForm} from "../ChatListForm";
 import {useDispatch, useSelector} from "react-redux";
 import {getChatList} from "../../store/chats/selectors";
 import {getMessageList} from "../../store/messages/selectors";
-import {addChat, deleteChat} from "../../store/chats/action";
-import {addMessages, deleteMessages, updateMessagesWithReply} from "../../store/messages/action";
+import {addChat, deleteChat} from "../../store/chats/actions";
+import {addMessages, deleteMessages, updateMessagesWithReply} from "../../store/messages/actions";
 import styles from "./Chat.module.scss";
 
 export const Chat = () => {

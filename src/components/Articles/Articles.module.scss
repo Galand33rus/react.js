@@ -1,0 +1,28 @@
+@import "src/vars";
+
+.article {
+  padding: 15px 20px;
+  border: 1px solid $white-color;
+  margin-bottom: 15px;
+}
+
+.title {
+  color: $primary-color;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.img {
+  width: 450px;
+}
+
+.reload {
+  margin-top: 20px;
+  color: $white-color;
+  padding: 6px 12px;
+  background-color: transparent;
+  border: 1px solid $primary-color;
+  border-radius: 4px;
+  text-transform: uppercase;
+  cursor: pointer;
+}

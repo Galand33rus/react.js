@@ -1,4 +1,4 @@
-import {ADD_CHAT, DELETE_CHAT} from "./action";
+import {ADD_CHAT, DELETE_CHAT} from "./actions";
 
 const initialChats = [];
 
