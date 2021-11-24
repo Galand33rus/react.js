@@ -1,5 +1,5 @@
 import {useDispatch, useSelector} from "react-redux";
-import {toggleCheckbox} from "../../store/profile/action";
+import {toggleCheckbox} from "../../store/profile/actions";
 import {Checkbox, FormControlLabel, FormGroup,} from "@mui/material";
 import {getCheckboxValue} from "../../store/profile/selectors";
 import {getName} from "../../store/profile/selectors";

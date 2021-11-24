@@ -21,6 +21,9 @@ function App() {
                   <Link to="/chat">Chats</Link>
                 </li>
                 <li>
+                  <Link to="/articles">Articles</Link>
+                </li>
+                <li>
                   <Link to="/profile">Profile</Link>
                 </li>
               </ul>

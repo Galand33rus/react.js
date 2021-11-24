@@ -2,7 +2,7 @@ import {useRef, useEffect} from "react";
 import {AUTHORS} from "../../utils/constants"
 import styles from "./Message.module.scss";
 import {useDispatch} from "react-redux";
-import {deleteMessage} from "../../store/messages/action";
+import {deleteMessage} from "../../store/messages/actions";
 
 export const Message = ({messageList, chatId}) => {
   const scroll = useRef();

@@ -1,4 +1,4 @@
-import {ADD_MESSAGES, DELETE_MESSAGES, UPDATE_MESSAGES, DELETE_MESSAGE} from "./action";
+import {ADD_MESSAGES, DELETE_MESSAGES, UPDATE_MESSAGES, DELETE_MESSAGE} from "./actions";
 
 const initialMessageList = {};
 
