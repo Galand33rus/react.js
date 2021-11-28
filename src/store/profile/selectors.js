@@ -5,3 +5,5 @@ export const getCheckboxValue = (state) => {
 export const getName = (state) => {
   return state.profile.name;
 };
+
+export const selectAuth = (state) => state.profile.authed;

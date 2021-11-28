@@ -11,7 +11,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const config = {
   key: 'react-data',
   storage,
-  blacklist: ["articles"],
+  blacklist: ["articles", "chats", "messages"],
 };
 
 const persistedReducer = persistReducer(
