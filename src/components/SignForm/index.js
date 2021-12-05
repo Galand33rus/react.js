@@ -1,0 +1,1 @@
+export {SingForm} from "./SingForm";
