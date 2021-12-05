@@ -2,14 +2,14 @@ import {useDispatch, useSelector} from "react-redux";
 import {changeName} from "../../store/profile/actions";
 // import {Checkbox, FormControlLabel, FormGroup,} from "@mui/material";
 // import {getCheckboxValue} from "../../store/profile/selectors";
-import {getName} from "../../store/profile/selectors";
+// import {getName} from "../../store/profile/selectors";
 import {logOut, userRef} from "../../services/firebase";
 import {useEffect, useState} from "react";
 import {onValue, set} from "firebase/database"
 
 export const Profile = () => {
   // const checkboxValue = useSelector(getCheckboxValue);
-  const name = useSelector(getName);
+  // const name = useSelector(getName);
   const [value, setValue] = useState(name);
   const dispatch = useDispatch();
 
